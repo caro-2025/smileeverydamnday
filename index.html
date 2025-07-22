@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile Every Damn Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=ROC+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Allura&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Remove all focus outlines */
+        *, *:focus, *:active, *:visited {
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+        }
+
+        a, button, input, textarea {
+            outline: none !important;
+            border: none !important;
+        }
+
+        a:focus, button:focus, input:focus, textarea:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'ROC Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #5D4E37;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(84, 101, 62, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 40px;
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .logo a {
+            outline: none;
+            text-decoration: none;
+        }
+
+        .logo a:focus {
+            outline: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #F5F1E8;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            outline: none;
+        }
+
+        .nav-links a:focus {
+            outline: none;
+        }
+
+        .nav-links a:hover {
+            color: #F5F1E8;
+            text-shadow: 0 0 10px rgba(245, 241, 232, 0.8);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            outline: none;
+            border: none;
+            background: none;
+        }
+
+        .hamburger:focus {
+            outline: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #F5F1E8;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('Bilder/Sonnenblumen.JPG') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 600px;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s ease-out;
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 0 2rem 0;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F5F1E8;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease;
+            white-space: nowrap;
+            color: #F5F1E8;
+            font-weight: 600;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin: 0 0 2rem 0;
+            animation: fadeInUp 1s ease 0.2s both;
+            opacity: 0.9;
+            color: #F5F1E8;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: #F5F1E8;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section.contact {
+            padding: 2rem 0;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about .section-content {
+            max-width: 800px;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #E0D8CC;
+        }
+
+        @media (min-width: 769px) {
+            .projects {
+                padding: 3rem 0;
+            }
+        }
+
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #5D4E37;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about {
+            background: #E8E2D6;
+        }
+
+        /* Projects Section - Carousel */
+        .projects-carousel {
+            position: relative;
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .carousel-container {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            max-width: 800px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .project-slide {
+            min-width: 100%;
+            text-align: center;
+        }
+
+        .project-slide h3 {
+            color: #5D4E37;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-slide h3 {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .video-container {
+            width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 337px;
+            border: none;
+        }
+
+        .project-description {
+            color: #5D4E37;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .nav-arrow.prev {
+            left: -60px;
+        }
+
+        .nav-arrow.next {
+            right: -60px;
+        }
+
+        .nav-arrow {
+            width: 40px;
+            height: 40px;
+            background: rgba(93, 78, 55, 0.8);
+            border: 1px solid rgba(93, 78, 55, 0.9);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            color: #F5F1E8;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-arrow:hover {
+            background: rgba(93, 78, 55, 0.95);
+            border: 1px solid rgba(93, 78, 55, 1);
+        }
+
+
+        /* Contact Section */
+        .contact {
+            background: url('bilder/Dronenaufnahme.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            color: white;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact .section-content {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .contact h2 {
+            color: #F5F1E8;
+        }
+
+        .contact p {
+            color: #F5F1E8;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item h3 {
+            color: #5D4E37;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #54653E;
+            color: #F5F1E8;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #5D4E37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #87A96B;
+        }
+
+        .footer-bottom {
+            color: #F5F1E8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(84, 101, 62, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                text-align: center;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                list-style: none;
+            }
+
+            .hero-content {
+                padding: 2rem 1rem;
+                margin: 0 1rem;
+                max-width: calc(100vw - 2rem);
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                white-space: normal;
+                word-break: break-word;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .social-icons {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 2rem 0;
+            }
+
+            .section.contact {
+                padding: 1rem 0;
+            }
+
+            .section-content {
+                padding: 0 1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .section p {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .projects-carousel {
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .carousel-container {
+                max-width: 100%;
+                margin: 0 1rem;
+            }
+
+            .nav-arrow.prev {
+                position: absolute;
+                left: 20px;
+                top: -50px;
+                transform: none;
+            }
+
+            .nav-arrow.next {
+                position: absolute;
+                right: 20px;
+                top: -50px;
+                transform: none;
+            }
+
+            .projects-carousel {
+                position: relative;
+                padding: 0 1rem;
+            }
+
+            .carousel-nav-mobile {
+                display: flex;
+                justify-content: center;
+                margin: 1rem 0;
+            }
+
+            .carousel-container {
+                margin: 0;
+            }
+
+            .video-container {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .video-container iframe {
+                height: 250px;
+                width: 100%;
+            }
+
+            .video-container iframe[src*="youtube.com"] {
+                height: 220px;
+                width: 100%;
+            }
+
+            .project-description {
+                padding: 0 1rem;
+                font-size: 1rem;
+                max-width: 100%;
+            }
+
+            .nav-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+                z-index: 10;
+            }
+
+            .contact .section-content {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .footer-content {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem 0.5rem;
+                margin: 0 0.5rem;
+                max-width: calc(100vw - 1rem);
+            }
+
+            .profile-image {
+                width: 160px;
+                height: 160px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .social-icons {
+                gap: 0.8rem;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .section-content {
+                padding: 0 0.5rem;
+            }
+
+            .section p {
+                padding: 0 0.25rem;
+            }
+
+            .project-description {
+                padding: 0 0.5rem;
+            }
+
+            .contact .section-content {
+                margin: 0.5rem;
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="Logo Film ohne Hintergrund.JPEG" alt="Logo">
+                </a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#projects" onclick="closeMenu()">My Projects</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>SmileEveryDamnDay</h1>
+            <p class="hero-subtitle">A visual diary by Carola Maria</p>
+            <img src="Portfoliobild.jpg" alt="Carola Maria Profile Picture" class="profile-image">
+            <a href="#projects" class="cta-button">Explore my work</a>
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@SmileEveryDamnDay" class="social-icon youtube" title="YouTube" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+                <a href="https://pixabay.com/de/users/caromaria" class="social-icon pixabay" title="Pixabay" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 300 300">
+                        <style>.st1{fill:currentColor}.st2{fill:currentColor}.st3{fill:transparent}</style>
+                        <path class="st1" d="M64.1 209.2v53.3c-8.5.4-17 .3-25.5-.2-.2-2.6-.5-4.8-.5-6.9 0-37.5-.1-74.9 0-112.4.1-30.2 17.9-55.6 44.9-64.5 40.1-13.3 80.6 15.7 84.3 56.4 2.8 30.6-13.3 57.8-40.1 69.3-8.6 3.7-17.6 4.9-26.8 4.9-11.8.1-23.4.1-36.3.1zm.1-26.9c13.1 0 25.3-.2 37.5 0 21.7.4 37.2-15.8 39.9-35 3-22-12.4-42.2-34.3-45.3h-.1c-20.4-2.7-41 13.1-42.7 34.2-1.3 15-.3 30-.3 46.1z"/>
+                        <path class="st2" d="M238.9 140l48.5 68.2H256l-36-49.3c-13.1 16.3-24 33.2-36.4 49.3h-31.3l48.4-68.2-43.1-64.6H189l30.8 46 30.8-46h31.3l-43 64.6z"/>
+                        <path class="st3" d="M64.2 182.3c0-16.1-1-31.2.2-46 1.7-21.1 22.3-36.9 42.7-34.2 22 3 37.4 23.2 34.4 45.2-2.6 19.2-18.2 35.4-39.9 35-12.1-.2-24.3 0-37.4 0z"/>
+                    </svg>
+                </a>
+                <a href="https://www.pexels.com/de-de/@carola-maria-bischof-736234643/" class="social-icon pexels" title="Pexels" target="_blank" rel="noopener noreferrer">
+                    <img src="pexels-seeklogo.png" alt="Pexels" style="width: 24px; height: 24px; object-fit: contain; filter: brightness(0) invert(1);">
+                </a>
+                <a href="https://vimeo.com/carolamaria" class="social-icon vimeo" title="Vimeo" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 502.345 502.345" fill="currentColor">
+                        <path d="M489.338,53.647c-23.502-30.216-73.862-25.18-88.97-22.662c-23.502,4.197-97.364,38.61-123.384,116.669l-3.357,11.751 h13.43c25.18-2.518,38.61,0,45.325,6.715c5.875,5.875,8.393,16.787,6.715,34.413c-1.679,19.305-11.751,41.128-21.823,59.593 l-0.839,1.679c-7.554,14.269-21.823,41.128-36.092,42.807c-5.875,0.839-11.751-2.518-17.626-9.233 c-19.305-20.984-23.502-58.754-26.859-92.328c-1.679-11.751-2.518-21.823-4.197-31.895l-1.679-9.233 c-3.357-20.984-7.554-43.646-13.43-63.79c-6.715-20.984-21.823-47.843-42.807-53.718c-20.144-5.875-45.325,1.679-61.272,11.751 c-28.538,17.626-52.879,39.449-76.38,60.433c-9.233,9.233-19.305,18.466-29.377,26.859C2.518,146.814,0,151.85,0,156.886 c0,3.357,1.679,6.715,3.357,10.072c0.839,0.839,0.839,1.679,1.679,2.518c3.357,5.875,8.393,14.269,19.305,15.948 c10.912,1.679,21.823-0.839,31.056-4.197c15.948-5.036,22.662-6.715,29.377,5.036c5.875,10.911,10.072,23.502,13.43,36.092 c1.679,5.875,3.357,12.59,5.875,18.466c8.393,25.18,15.108,52.039,22.662,81.416l2.518,10.911 c11.751,49.521,28.538,117.508,71.344,135.974c6.715,3.357,13.43,4.197,20.984,4.197c20.984,0,43.646-10.072,56.236-17.626 c49.521-30.216,84.774-72.184,110.793-106.597c70.505-96.525,106.597-203.121,111.633-230.82 C505.285,90.578,501.089,68.755,489.338,53.647z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/smileeverydamndayofficial" class="social-icon instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="section-content">
+            <h2>About</h2>
+            <p>I believe the quiet moments are where life truly happens - the ones we so often overlook.</p>
+            <p>I'm Carola Maria, a visual storyteller with a love for fleeting details and the beauty hidden in the everyday.</p>
+            <p>Through short films, spoken word poetry and documentaries, I hope to open up new perspectives on the world, reminding us that even the ordinary is a reason to smile.</p>
+            <p>My work invites you to pause, find meaning in unexpected places, and discover the quiet magic that's always there when we choose to notice.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="section-content">
+            <h2>My Projects</h2>
+            <div class="projects-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <div class="project-slide">
+                            <h3>Documentaries</h3>
+                            <div class="video-container">
+                                <iframe src="https://player.vimeo.com/video/851064872" title="Was die Natur uns sagt" allowfullscreen></iframe>
+                            </div>
+                            <div class="project-description">
+                                <p>In my film <em>„Was die Natur uns sagt"</em>, I explore the connection between humans and nature. Our lives are closely interwoven with nature – it provides the air we breathe, the food we eat, and the balance we depend on. The film reminds us that every living creature plays an important role in keeping our ecosystem in harmony.</p>
+                                <p>It's more than just a reflection – it's a call to action: to protect what protects us and to take responsibility for it.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-slide">
+                            <h3>Short Films</h3>
+                            <div class="video-container">
+                                <iframe src="https://player.vimeo.com/video/753514057" title="Les feuilles tombent en silence" allowfullscreen></iframe>
+                            </div>
+                            <div class="project-description">
+                                <p><em>« Les feuilles tombent en silence »</em> captures Montréal in autumn, with its glowing colors and the cheerful little squirrels that bring the city to life. Even without showing faces, the film quietly tells stories of connection, hope, and new beginnings.</p>
+                                <p>It's a way for me to share the beauty I see in Montréal and the deep connection I feel to it.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-slide">
+                            <h3>Spoken Word Poetry</h3>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/fvjm6wqca-8" title="For the first time" allowfullscreen></iframe>
+                            </div>
+                            <div class="project-description">
+                                <p><em>"For the First Time"</em> is a poem I wrote to express the idea that every moment is unique – not because it's spectacular, but because we can see it with fresh eyes when we're truly present.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-slide">
+                            <h3>Drone Footage</h3>
+                            <div class="video-container">
+                                <iframe src="https://player.vimeo.com/video/644902804" title="Drone Footage" allowfullscreen></iframe>
+                            </div>
+                            <div class="project-description">
+                                <p>During the pandemic, I created <em>"Peaceful Moments"</em> – a film featuring stunning drone footage from Baden-Württemberg. It captures the beauty and symmetry of southern Germany and offered a sense of hope in uncertain times.</p>
+                                <p>Even after the pandemic, it reminds us that there is always beauty and comfort, even in the hardest moments.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Duplicate first slide for seamless loop -->
+                        <div class="project-slide">
+                            <h3>Documentaries</h3>
+                            <div class="video-container">
+                                <iframe src="https://player.vimeo.com/video/851064872" title="Was die Natur uns sagt" allowfullscreen></iframe>
+                            </div>
+                            <div class="project-description">
+                                <p>In my film <em>„Was die Natur uns sagt"</em>, I explore the connection between humans and nature. Our lives are closely interwoven with nature – it provides the air we breathe, the food we eat, and the balance we depend on. The film reminds us that every living creature plays an important role in keeping our ecosystem in harmony.</p>
+                                <p>It's more than just a reflection – it's a call to action: to protect what protects us and to take responsibility for it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="nav-arrow prev" id="prev-btn" onclick="previousSlide()">‹</button>
+                <button class="nav-arrow next" id="next-btn" onclick="nextSlide()">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-content">
+            <h2>Contact</h2>
+            <p>Got an idea or a project in mind? Let's work together and create something amazing.</p>
+            <p style="text-align: center;">
+                Email me at 
+                <a href="mailto:bischofcarolamaria@gmail.com" style="
+                    color: #F5F1E8; 
+                    text-decoration: none; 
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.color='#E8E2D6'; this.style.textDecoration='underline';" onmouseout="this.style.color='#F5F1E8'; this.style.textDecoration='none';">
+                    bischofcarolamaria@gmail.com
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Smile Every Damn Day</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 4; // Original slides count
+        const track = document.getElementById('carousel-track');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let isTransitioning = false;
+
+        function updateCarousel(instant = false) {
+            const translateX = -currentSlide * 100;
+            if (instant) {
+                track.style.transition = 'none';
+            } else {
+                track.style.transition = 'transform 0.5s ease';
+            }
+            track.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function nextSlide() {
+            if (isTransitioning) return;
+            
+            isTransitioning = true;
+            currentSlide++;
+            updateCarousel();
+            
+            // If we're at the duplicate slide, reset to first slide without transition
+            if (currentSlide === totalSlides) {
+                setTimeout(() => {
+                    currentSlide = 0;
+                    updateCarousel(true);
+                    isTransitioning = false;
+                }, 500);
+            } else {
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
+            }
+        }
+
+        function previousSlide() {
+            if (isTransitioning) return;
+            
+            isTransitioning = true;
+            
+            // If we're at the first slide, jump to duplicate without transition
+            if (currentSlide === 0) {
+                currentSlide = totalSlides;
+                updateCarousel(true);
+                setTimeout(() => {
+                    currentSlide = totalSlides - 1;
+                    updateCarousel();
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 500);
+                }, 50);
+            } else {
+                currentSlide--;
+                updateCarousel();
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
+            }
+        }
+
+        // Initialize carousel
+        updateCarousel();
+
+        // Parallax scroll effect for hero content
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroContent = document.querySelector('.hero-content');
+            const contactSection = document.querySelector('.contact');
+            const parallaxSpeed = 0.2; // Slower speed
+            
+            if (heroContent) {
+                const translateY = scrolled * parallaxSpeed;
+                heroContent.style.transform = `translateY(${translateY}px)`;
+            }
+            
+            // Parallax effect for contact section
+            if (contactSection) {
+                const contactRect = contactSection.getBoundingClientRect();
+                const contactTop = contactRect.top + scrolled;
+                const contactParallaxSpeed = 0.15; // Even slower for background
+                
+                if (contactRect.top < window.innerHeight && contactRect.bottom > 0) {
+                    const relativeScrolled = scrolled - contactTop + window.innerHeight;
+                    const translateY = relativeScrolled * contactParallaxSpeed;
+                    contactSection.style.backgroundPositionY = `${50 - translateY * 0.1}%`;
+                }
+            }
+        });
+
+        // Hamburger Menu Functions
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            const navContainer = document.querySelector('.nav-container');
+            
+            if (!navContainer.contains(event.target) && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
