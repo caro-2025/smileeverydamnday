@@ -75,6 +75,42 @@
             text-shadow: 0 0 10px rgba(245, 241, 232, 0.8);
         }
         
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            outline: none;
+            border: none;
+            background: none;
+        }
+
+        .hamburger:focus {
+            outline: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #F5F1E8;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -189,9 +225,36 @@
             .nav-container {
                 padding: 0 1rem;
             }
-
+            
+            .hamburger {
+                display: flex;
+            }
+            
             .nav-links {
-                gap: 1rem;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(84, 101, 62, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                padding: 0.8rem 2rem;
+                border-bottom: 1px solid rgba(245, 241, 232, 0.1);
+            }
+            
+            .nav-links li:last-child {
+                border-bottom: none;
             }
 
             .container {
@@ -237,6 +300,11 @@
                 <a href="index.html">
                     <img src="Logo Film ohne Hintergrund.JPEG" alt="Logo">
                 </a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html#about">About</a></li>
@@ -285,5 +353,35 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!event.target.closest('nav')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                const navLinks = document.querySelector('.nav-links');
+                const hamburger = document.querySelector('.hamburger');
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
