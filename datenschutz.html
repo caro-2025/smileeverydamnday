@@ -125,25 +125,40 @@
             margin-bottom: 0.5rem;
         }
         
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.15);
+        /* Footer */
+        footer {
+            background: #54653E;
             color: #F5F1E8;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem 0;
+            text-align: center;
         }
         
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #5D4E37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #87A96B;
+        }
+        
+        .footer-bottom {
+            color: #F5F1E8;
         }
         
         a {
@@ -174,6 +189,10 @@
             
             p {
                 font-size: 1rem;
+            }
+            
+            .footer-content {
+                padding: 0 1rem;
             }
         }
     </style>
@@ -269,8 +288,19 @@
         <p>Sie können sich jederzeit mit einer Beschwerde an eine Aufsichtsbehörde wenden, z.B. an die zuständige Aufsichtsbehörde des Bundeslandes Ihres Wohnsitzes oder an die für uns zuständige Behörde.</p>
         
         <p><em>Stand: August 2025</em></p>
-        
-        <a href="index.html" class="back-link">Zurück zur Hauptseite</a>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Smile Every Damn Day</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
