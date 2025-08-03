@@ -518,17 +518,17 @@
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
+            gap: 0.5rem;
         }
 
         .footer-links {
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
-            position: absolute;
-            right: 2rem;
+            order: 1;
         }
 
         .footer-links a {
@@ -558,6 +558,7 @@
 
         .footer-bottom {
             color: #F5F1E8;
+            order: 2;
         }
 
         /* Animations */
