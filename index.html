@@ -361,6 +361,28 @@
             to   { transform: scaleX(1); }
         }
 
+        .documentary-label {
+            position: fixed;
+            bottom: 2.8rem;
+            left: 4rem;
+            z-index: 1001;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(248, 242, 230, 0.85);
+            opacity: 1;
+            transition: opacity 0.4s ease;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        .documentary-label.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         /* Showreel Modal */
         .showreel-modal {
             display: none;
@@ -1386,6 +1408,13 @@
                 bottom: 1.8rem;
             }
 
+            .documentary-label {
+                display: block;
+                left: auto;
+                right: 1.2rem;
+                bottom: 4.2rem;
+            }
+
             .contact .section-content {
                 margin: 1rem;
                 padding: 2rem 1rem;
@@ -1501,6 +1530,9 @@
             <div class="hero-content"></div>
         </section>
     </div>
+
+    <!-- Documentary Filmmaking label (desktop only) -->
+    <div class="documentary-label" id="documentaryLabel">Documentary Filmmaking</div>
 
     <!-- Play Showreel (direct body child for Safari compatibility) -->
     <div class="play-showreel" id="playShowreel">
@@ -1659,13 +1691,14 @@
 
             // Hide play showreel when scrolling past hero
             const playShowreel = document.querySelector('.play-showreel');
+            const documentaryLabel = document.querySelector('.documentary-label');
             const heroSection = document.querySelector('.hero');
             if (playShowreel && heroSection) {
                 const heroBottom = heroSection.getBoundingClientRect().bottom + scrolled;
-                if (scrolled > heroBottom - window.innerHeight * 0.5) {
-                    playShowreel.classList.add('hidden');
-                } else {
-                    playShowreel.classList.remove('hidden');
+                const pastHero = scrolled > heroBottom - window.innerHeight * 0.5;
+                playShowreel.classList.toggle('hidden', pastHero);
+                if (documentaryLabel) {
+                    documentaryLabel.classList.toggle('hidden', pastHero);
                 }
             }
 
