@@ -310,20 +310,23 @@
         }
 
         .play-showreel {
-            position: fixed;
+            position: absolute;
             bottom: 2.8rem;
             right: 4rem;
             z-index: 1001;
             cursor: pointer;
             opacity: 1;
-            transition: opacity 0.4s ease;
+            visibility: visible;
+            transition: opacity 0.4s ease, visibility 0s linear 0s;
             -webkit-transform: translateZ(0);
             transform: translateZ(0);
         }
 
         .play-showreel.hidden {
             opacity: 0;
+            visibility: hidden;
             pointer-events: none;
+            transition: opacity 0.4s ease, visibility 0s linear 0.4s;
         }
 
         .play-showreel-text {
@@ -362,7 +365,7 @@
         }
 
         .documentary-label {
-            position: fixed;
+            position: absolute;
             bottom: 2.8rem;
             left: 4rem;
             z-index: 1001;
@@ -373,14 +376,17 @@
             text-transform: uppercase;
             color: rgba(248, 242, 230, 0.85);
             opacity: 1;
-            transition: opacity 0.4s ease;
+            visibility: visible;
+            transition: opacity 0.4s ease, visibility 0s linear 0s;
             -webkit-transform: translateZ(0);
             transform: translateZ(0);
         }
 
         .documentary-label.hidden {
             opacity: 0;
+            visibility: hidden;
             pointer-events: none;
+            transition: opacity 0.4s ease, visibility 0s linear 0.4s;
         }
 
         /* Showreel Modal */
@@ -1664,14 +1670,14 @@
             </video>
             <div class="hero-content"></div>
         </section>
-    </div>
 
-    <!-- Documentary Filmmaking label (desktop only) -->
-    <div class="documentary-label" id="documentaryLabel">Documentary Filmmaking</div>
+        <!-- Documentary Filmmaking label (scrolls away with the hero) -->
+        <div class="documentary-label" id="documentaryLabel">Documentary Filmmaking</div>
 
-    <!-- Play Showreel (direct body child for Safari compatibility) -->
-    <div class="play-showreel" id="playShowreel">
-        <span class="play-showreel-text">Play Showreel</span>
+        <!-- Play Showreel (scrolls away with the hero) -->
+        <div class="play-showreel" id="playShowreel">
+            <span class="play-showreel-text">Play Showreel</span>
+        </div>
     </div>
 
     <!-- Vimeo preload -->
@@ -1863,8 +1869,9 @@
             const documentaryLabel = document.querySelector('.documentary-label');
             const heroSection = document.querySelector('.hero');
             if (playShowreel && heroSection) {
-                const heroBottom = heroSection.getBoundingClientRect().bottom + scrolled;
-                const pastHero = scrolled > heroBottom - window.innerHeight * 0.5;
+                // Hide once the hero is mostly scrolled out of view
+                const heroBottom = heroSection.getBoundingClientRect().bottom;
+                const pastHero = heroBottom < window.innerHeight * 0.6;
                 playShowreel.classList.toggle('hidden', pastHero);
                 if (documentaryLabel) {
                     documentaryLabel.classList.toggle('hidden', pastHero);
