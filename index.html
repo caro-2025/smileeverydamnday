@@ -694,9 +694,89 @@
             }
         }
 
+        /* What I Work With Section */
+        .work-with {
+            background: #ede8df;
+        }
+
+        .work-with .section-content {
+            max-width: 1100px;
+        }
+
+        .work-with h2 {
+            text-align: left;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-with-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .work-with-intro {
+            flex: 1;
+            max-width: 540px;
+        }
+
+        .work-with .work-with-intro p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            color: rgba(93, 78, 55, 0.75);
+            text-align: left;
+            margin-top: 3.25rem;
+            margin-bottom: 0;
+        }
+
+        .work-with-cols {
+            display: flex;
+            gap: 3.5rem;
+            flex-shrink: 0;
+        }
+
+        .work-with .work-with-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            color: #444444;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            text-align: left;
+            padding-left: 1rem;
+        }
+
+        .work-with-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .work-with-list li {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.9;
+            letter-spacing: 0.03em;
+            color: #444444;
+        }
+
+        .work-with-list li::before {
+            content: "·";
+            margin-right: 0.5rem;
+            color: rgba(93, 78, 55, 0.7);
+        }
+
         /* Projects Section */
         .projects-section {
-            background: #f0ebe2;
+            background: #e1dad0;
         }
 
         .projects-section,
@@ -847,11 +927,20 @@
             .drone-section .section-content {
                 padding: 3rem 1.5rem;
             }
+
+            .work-with-layout {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            .work-with-cols {
+                gap: 2.5rem;
+            }
         }
 
         /* Kamera section */
         .kamera-section.projects-section {
-            background: #e5ddd3;
+            background: #d5cdc0;
         }
 
         .kamera-grid {
@@ -1571,6 +1660,39 @@
                     <p>My background in Geography and Social and Cultural Anthropology shapes the way I see the world. It taught me to look closer at how people live, how they connect, and what truly moves them.</p>
                     <p>Video journalism gave me a strong foundation in shaping stories with clarity and heart. Through camera work, visual storytelling, and editing, my aim is always to make complex subjects feel human and tangible.</p>
                     <p class="about-highlight">I'm looking for the real moments that stay with you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Work With -->
+    <section class="section work-with reveal-section" id="work-with">
+        <div class="section-content">
+            <h2 class="reveal-title">What I Work With</h2>
+            <div class="reveal-line"></div>
+            <div class="work-with-layout reveal-content">
+                <div class="work-with-intro">
+                    <p>I support NGOs, foundations, and social initiatives in making their work, perspectives, and stories visible.</p>
+                </div>
+                <div class="work-with-cols">
+                    <div class="work-with-group">
+                        <p class="work-with-label">Themes</p>
+                        <ul class="work-with-list">
+                            <li>Urban life &amp; community</li>
+                            <li>Environment &amp; climate</li>
+                            <li>Migration, identity &amp; belonging</li>
+                            <li>Movement, participation &amp; inclusion</li>
+                        </ul>
+                    </div>
+                    <div class="work-with-group">
+                        <p class="work-with-label">Formats</p>
+                        <ul class="work-with-list">
+                            <li>Project films</li>
+                            <li>Portraits</li>
+                            <li>Social media series</li>
+                            <li>Documentary moments</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
