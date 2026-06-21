@@ -502,6 +502,7 @@
             font-size: 1.5rem;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -546,6 +547,7 @@
             transition: all 0.3s ease;
             animation: fadeInUp 1s ease 0.6s both;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -1164,6 +1166,7 @@
             font-size: 18px;
             color: #F5F1E8;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .nav-arrow:hover {
@@ -1757,12 +1760,12 @@
             <div class="projects-layout reveal-content">
                 <div class="projects-left">
                     <div class="projects-grid kamera-grid">
-                        <img loading="lazy" src="Bilder/kamera-parasonic.png" alt="Panasonic Kamera">
-                        <img loading="lazy" src="Bilder/kamera-akku.png" alt="Akku">
-                        <img loading="lazy" src="Bilder/kamera-sdkarte.png" alt="SD-Karte und Akku">
-                        <img loading="lazy" src="Bilder/kamera-mikrofon.png" alt="Mikrofon">
-                        <img loading="lazy" src="Bilder/kamera-mikrofonkabel.png" alt="Mikrofonkabel">
-                        <img loading="lazy" src="Bilder/kamera-einschalten.png" alt="Einschalten">
+                        <img loading="lazy" src="Bilder/kamera-parasonic.jpg" alt="Panasonic Kamera">
+                        <img loading="lazy" src="Bilder/kamera-akku.jpg" alt="Akku">
+                        <img loading="lazy" src="Bilder/kamera-sdkarte.jpg" alt="SD-Karte und Akku">
+                        <img loading="lazy" src="Bilder/kamera-mikrofon.jpg" alt="Mikrofon">
+                        <img loading="lazy" src="Bilder/kamera-mikrofonkabel.jpg" alt="Mikrofonkabel">
+                        <img loading="lazy" src="Bilder/kamera-einschalten.jpg" alt="Einschalten">
                     </div>
                 </div>
                 <div class="projects-text">
@@ -1787,10 +1790,10 @@
                     <p>It is a way of guiding the eye to the moment.</p>
                 </div>
                 <div class="projects-grid">
-                    <img loading="lazy" src="Bilder/schaerfenverlagerung-1.png" alt="Schärfenverlagerung – Arbeitsproben 1">
-                    <img loading="lazy" src="Bilder/schaerfenverlagerung-2.png" alt="Schärfenverlagerung – Arbeitsproben 2">
-                    <img loading="lazy" src="Bilder/schaerfenverlagerung-3.png" alt="Schärfenverlagerung – Arbeitsproben 3">
-                    <img loading="lazy" src="Bilder/schaerfenverlagerung-4.png" alt="Schärfenverlagerung – Arbeitsproben 4">
+                    <img loading="lazy" src="Bilder/schaerfenverlagerung-1.jpg" alt="Schärfenverlagerung – Arbeitsproben 1">
+                    <img loading="lazy" src="Bilder/schaerfenverlagerung-2.jpg" alt="Schärfenverlagerung – Arbeitsproben 2">
+                    <img loading="lazy" src="Bilder/schaerfenverlagerung-3.jpg" alt="Schärfenverlagerung – Arbeitsproben 3">
+                    <img loading="lazy" src="Bilder/schaerfenverlagerung-4.jpg" alt="Schärfenverlagerung – Arbeitsproben 4">
                 </div>
             </div>
         </div>
@@ -1982,15 +1985,37 @@
     }
     </script>
 
-    <!-- Vimeo: seek back at 16s, loop=1 as black-screen safety net -->
-    <!-- Safari loop fix: seek before end to avoid black frame -->
+    <!-- Hero background video: keep it playing smoothly on Safari/iOS.
+         Native loop handles looping; we only make sure Safari resumes if it
+         ever pauses (loop seam, power saving, tab switch) instead of freezing. -->
     <script>
         var heroVideo = document.querySelector('.hero-bg');
         if (heroVideo) {
-            heroVideo.addEventListener('timeupdate', function() {
-                if (heroVideo.duration && heroVideo.currentTime > heroVideo.duration - 0.3) {
-                    heroVideo.currentTime = 0;
-                }
+            // Safari needs muted set in JS too for reliable autoplay
+            heroVideo.muted = true;
+            heroVideo.setAttribute('muted', '');
+
+            var playHero = function() {
+                var p = heroVideo.play();
+                if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+            };
+
+            playHero();
+
+            // If Safari stalls or pauses the muted background video, restart it
+            heroVideo.addEventListener('canplay', playHero);
+            heroVideo.addEventListener('stalled', playHero);
+            heroVideo.addEventListener('pause', function () {
+                if (!document.hidden) { playHero(); }
+            });
+            // Safety net in case the native loop drops a frame at the seam
+            heroVideo.addEventListener('ended', function () {
+                heroVideo.currentTime = 0;
+                playHero();
+            });
+            // Resume when returning to the tab
+            document.addEventListener('visibilitychange', function () {
+                if (!document.hidden) { playHero(); }
             });
         }
     </script>

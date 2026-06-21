@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Claude Code local files
+.claude/
+
+# Lokales Backup der Original-Bilder/-Videos (nicht hochladen)
+Bilder/originale/
